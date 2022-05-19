@@ -2,53 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TravelLyzr</title>
     <link rel="manifest" href="manifest.json">
-    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="styles/css/style.css" type="text/css" rel="stylesheet">
+    <link href="styles/css/bootstrap4-wizardry.css" type="text/css" rel="stylesheet">
+    <title> TravelLyzr></title>
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <!--<li><a href="#/favourites">Favourites</a></li>-->
-            <li><a href="#/contact">Contact</a></li>
-            <li><a href="#/shop">Shop</a></li>
-            <li><a href="#/">Home</a></li>
-        </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light separate flexrow">
+            <div class="">
+                <div class="flexrow">
+                    <a class="navbar-brand" href="#"><img src="images/icons/compass.png" class="imgMenu"></a>
+                    <h1>Travellyzr</h1>
+                </div>
+                <section id="login">
+                    <span id="login_state" class="red"></span>
+                    <span id="user_display_name"></span>
+
+                    <form id="frm_login">
+                        <label for="username">Benutzername</label>
+                        <input type="text" id="username" placeholder="Benutzername"/>
+                        <label for="password">Passwort </label>
+                        <input type="password" id="password" placeholder="***********"/>
+                        <button id="btn_login">Einloggen</button>
+                    </form>
+                </section>
+            </div>
+
+        </nav>
+    </header>
+
+    <main id="kwmJS">
+        <article id="target_for_template">
+            <p>I am a cute little paragraph. Once you solved templating, I will die and for ever be gone :}.</p>
+        </article>
+    </main>
+
+
+    <nav class="fixed-bottom" id="menuBottom">
+        <a href="#" id="back">
+            <img class="homeNav" src="./images/icons/home.png">
+        </a>
     </nav>
-</header>
-<main id="kwmJS">
-    <article id="target_for_template">
-        <p>I am a cute little paragraph. Once you solved templating, I will die and for ever be gone :}.</p>
-    </article>
-</main>
-<section id="login">
-    <span id="login_state" class="red"></span>
-    <span id="user_display_name"></span>
 
-    <form id="frm_login">
-        <label for="username">Benutzername</label>
-        <input type="text" id="username" placeholder="Josef Altmann"/>
-        <label for="password">Passwort</label>
-        <input type="password" id="password"/>
-        <button id="btn_login">Einloggen</button>
-    </form>
-</section>
-
-<form id="frm_submit_post">
-    <label for="journey_name">Titel</label>
-    <input type="text" id="journey_name" placeholder="Reisegruppe"/>
-    <label for="description">Text</label>
-    <textarea id="description" placeholder="Es war einmal..."></textarea>
-    <button id="btn_submit_post">Abschicken</button>
-</form>
-
-<div id="hardfacts"></div>
-<button id="fetch_travelplan">Reiseplan Gruppe Griechenland holen</button>
-
-<!--<script type="module" src="view_logic/js/kwm.js"></script>-->
 <script type="module" src="pwa.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+<!--<script type="module" src="js/kwm.js?v=0.2"></script>-->
 
 </body>
 </html>

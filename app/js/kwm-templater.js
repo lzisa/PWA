@@ -30,7 +30,7 @@ export default class KWM_Templater{
         });
     }
 
-    findAndFillEscapings(regex, open, close, mode, template, values=false){
+    findAndFillEscapings(regex, open, close, mode, template, values = false){
         let even = true;
         let rendered = template;
         let result;

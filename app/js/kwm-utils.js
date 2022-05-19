@@ -16,7 +16,6 @@ export default class KWM_Utils{
         else
             return (typeof variable === "undefined" || variable == null || variable === "");
     }
-
     static getOS(){
         let device = "Unknown Device";
         if(navigator.appVersion.indexOf("Win")!=-1) device = "Windows";

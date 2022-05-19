@@ -9,12 +9,18 @@ self.addEventListener('install', function (e) {
     }))
 });
 
-self.addEventListener("active", event => {
-    console.log("activate!");
+self.addEventListener("activate", event => {
+   // console.log("activate!");
 });
 
-self.addEventListener("fetch", event => {
-    console.log("fetch!");
+self.addEventListener("fetch", function(event){
+   // console.log("Fetch", event.request);
 });
 
-//TODO: Push Message
+self.addEventListener("push", event => {
+    const title = 'KWM-Push Nachricht';
+    const options = {
+        body: event.data.text()
+    };
+    event.waitUntil(self.registration.showNotification(title,options));
+});

@@ -1,10 +1,8 @@
-'use strict'
+'use strict';
 
 //Import and rename your views here:
-import {view as home} from '../views/view.home.js?v=0.2';
-import {view as shop} from '../views/view.shop.js?v=0.2';
-import {view as contact} from '../views/view.contact.js?v=0.2';
 import {view as route404} from '../views/view.404.js?v=0.2';
+import {view as journey} from '../views/view.journeys.js?v=0.2';
 /*******************************************************
  *     Hash-based router for Single Page Applications.
  *     Handles Routes behind a '/#/' to your convenience.
@@ -18,8 +16,8 @@ import {view as route404} from '../views/view.404.js?v=0.2';
 
 export default class KWM_Router{
     constructor(){
-        this.routes = [home, shop, contact, route404];
-        this.homeRoute = home;
+        this.routes = [journey, route404];
+        this.homeRoute = journey;
         this.route404 = route404;
         this.init();
     }

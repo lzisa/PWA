@@ -1,6 +1,6 @@
 {
-  "name": "Travel Planner",
-  "short_name": "trav plan",
+  "name": "TravelLyzr",
+  "short_name": "TravelLyzr",
   "theme_color": "#fff",
   "background_color": "#fff",
   "display": "standalone",
