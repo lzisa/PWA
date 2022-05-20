@@ -1,0 +1,30 @@
+.member, .activityCard {
+  background-color: #d4decf;
+  border: 1px solid #607b52;
+  list-style-type: none;
+  padding: 1em;
+  border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+}
+
+.activityCard {
+  background-color: #93ae85;
+}
+
+.body {
+  font-size: 25px;
+  color: #93ae85;
+  font-weight: bold;
+  line-height: 2em;
+}
+
+#title {
+  font-family: "Source Sans Pro";
+  font-size: 50px;
+  color: #3b6538;
+  font-weight: thin;
+  line-height: 2em;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,22 @@
+.member{
+  background-color: $lightgrey;
+  border: 1px solid darken($lightgreen, 20%);
+  list-style-type: none;
+  padding: $paddingDiv;
+  @include border-radius(0.5em);
+}
+
+.activityCard{
+  @extend .member;
+  background-color: $lightgreen;
+}
+
+.body{
+  @include font-settings(25px, #93ae85, bold,  2em);
+}
+
+#title{
+  @include font-settings(50px, $darkgreen, thin, 2em, 'Verdana');
+}
+
+

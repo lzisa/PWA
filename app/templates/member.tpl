@@ -1,4 +1,4 @@
-<li class="member list-group-item" id="member<&>ID<&>">
+<li class="member" id="member<&>ID<&>">
     <div id="userimg"></div>
 <p>Username: <&>nickname<&></p>
 <p>Name: <&>user_firstname<&> <&>user_lastname<&></p>

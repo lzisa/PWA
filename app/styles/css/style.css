@@ -1,9 +1,10 @@
-/*Allgemeines*/
 body{
     display: flex;
     flex-direction: column;
 }
-
+h1, h2, h3, h4, h5{
+    font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
 #main_content{
     display: flex;
     flex-direction: column;
@@ -102,7 +103,7 @@ nav{
 }
 /*list view*/
 #journeyList{
-margin:2em;
+    margin:2em;
 }
 
 .journeyLink{
@@ -141,8 +142,8 @@ li{
 }
 
 .mainMenuItem{
-align-items: center;
-display: flex;
+    align-items: center;
+    display: flex;
     flex-direction: row;
     flex-flow: row;
 }
@@ -195,7 +196,12 @@ display: flex;
 
 /*iPhone X - Ansicht*/
 @media (max-width: 376px) {
-
+    #contentField {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+        margin-left: 0;
+    }
     h1{
         font-size: 4em;
 

@@ -1,6 +1,6 @@
-<div class="card mb-3 text-center border-dark activity">
+<div class="activityCard">
     <div class="card-body">
-        <p class="lead"><&>title<&></p>
+        <h3><&>title<&></h3>
         <p><&>beschreibung<&></p>
     </div>
 </div>

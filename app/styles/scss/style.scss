@@ -4,5 +4,10 @@ $darkgreen: #3b6538;
 $borderradius: 15px;
 $paddingDiv: 1em;
 
+$size: 2em;
+$colour: #fas4563;
+$weight: bold;
+
+@import "mixins";
 @import "components";
 

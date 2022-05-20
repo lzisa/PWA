@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {                         // Dictionary of files
-                    'styles/css/main.css': 'styles/sass/style.scss',       // 'destination': 'source'
+                    'styles/css/main.css': 'styles/scss/style.scss',       // 'destination': 'source'
                 }
             }
         },
@@ -39,6 +39,7 @@ module.exports = function (grunt) {
                 files: {
                     'styles/css/style.min.css': [ 'style.css'],
                     'styles/css/bootstrap4-wizardry.min.css': [ 'bootstrap4-wizardry.css'],
+                    'styles/css/main.min.css': [ 'main.css']
                 }
             }
         },
@@ -58,5 +59,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('default', ['sass', 'cssmin', "concat"]);
+    grunt.registerTask('default', ['sass', 'cssmin', "concat, uglify"]);
 };
