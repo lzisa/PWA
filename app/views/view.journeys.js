@@ -70,7 +70,7 @@ async function toggleHidden(journeys, journey) {
     //clearDetailView
     clearDetailList();
 
-    let journeysDetailContainer = document.getElementById("detailList");
+    let journeysDetailContainer = document.getElementById("main_content");
     //render Detail View
     for (let currJourney of journeys) {
         if (journey.id === currJourney.id) {

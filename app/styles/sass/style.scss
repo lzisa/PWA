@@ -1,38 +1,207 @@
-$navbar-padding-y:                  $spacer * .5;
-$navbar-padding-x:                  null;
-
-$navbar-nav-link-padding-x:         .5rem;
-
-$navbar-brand-font-size:            $font-size-lg;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2;
-$navbar-brand-height:               $navbar-brand-font-size * $line-height-base;
-$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5;
-$navbar-brand-margin-end:           1rem;
-
-$navbar-toggler-padding-y:          .25rem;
-$navbar-toggler-padding-x:          .75rem;
-$navbar-toggler-font-size:          $font-size-lg;
-$navbar-toggler-border-radius:      $btn-border-radius;
-$navbar-toggler-focus-width:        $btn-focus-width;
-$navbar-toggler-transition:         box-shadow .15s ease-in-out;
-
-
-$navbar-dark-color:                 rgba($white, .55);
-$navbar-dark-hover-color:           rgba($white, .75);
-$navbar-dark-active-color:          $white;
-$navbar-dark-disabled-color:        rgba($white, .25);
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-$navbar-dark-toggler-border-color:  rgba($white, .1);
-
-$navbar-light-color:                rgba($black, .55);
-$navbar-light-hover-color:          rgba($black, .7);
-$navbar-light-active-color:         rgba($black, .9);
-$navbar-light-disabled-color:       rgba($black, .3);
-$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-$navbar-light-toggler-border-color: rgba($black, .1);
-
-$navbar-light-brand-color:                $navbar-light-active-color;
-$navbar-light-brand-hover-color:          $navbar-light-active-color;
-$navbar-dark-brand-color:                 $navbar-dark-active-color;
-$navbar-dark-brand-hover-color:           $navbar-dark-active-color;
+/*Allgemeines*/
+/*Navigation*/
+/* Centered text */
+/*list view*/
+/*detail View: Banner*/
+/*Tablet-Ansicht*/
+/*iPhone X - Ansicht*/
+body {
+  display: flex;
+  flex-direction: column;
+}
+#main_content {
+  display: flex;
+  flex-direction: column;
+}
+#user_display_name {
+  color: #000000;
+}
+#detailContainer {
+  margin: 3em;
+}
+#homeImg {
+  width: 150px;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-grow: initial;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+.nav {
+  margin-top: 5em;
+  margin-bottom: 15em;
+}
+#viewSpecific {
+  margin-top: 5em;
+  margin-bottom: 10em;
+}
+#newJourney {
+  margin: 2em;
+}
+#newJourneyForm {
+  display: none;
+}
+#menuBottom {
+  display: flex;
+  flex-display: row;
+  align-items: center;
+  border-top: #93ae85 solid 1px;
+  background-color: white;
+}
+.imgMenu {
+  height: 150px;
+}
+.homeNav {
+  height: 8em;
+  padding: 2em;
+}
+.center {
+  display: flex;
+  align-items: center;
+}
+#members {
+  background-color: #93ae85;
+  border-radius: 25%;
+  border: none;
+  &:hover {
+    background-color: #ffffff;
+    border: 0.5px solid #413B37;
+  }
+}
+#todos {
+  background-color: #93ae85;
+  border-radius: 25%;
+  border: none;
+  &:hover {
+    background-color: #ffffff;
+    border: 0.5px solid #413B37;
+  }
+}
+#targets {
+  background-color: #93ae85;
+  border-radius: 25%;
+  border: none;
+  &:hover {
+    background-color: #ffffff;
+    border: 0.5px solid #413B37;
+  }
+}
+.member {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.flexrow {
+  display: flex;
+  flex-display: row;
+  align-items: center;
+}
+.separate {
+  display: flex;
+  justify-content: space-between;
+}
+#journey_contents {
+  display: flex;
+  flex-direction: column;
+  margin: 4em;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  opacity: 0.6;
+  padding: 6em;
+}
+#journeyList {
+  margin: 2em;
+}
+.journeyLink {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.journeyEvent {
+  background-color: white;
+  border: 1px solid #93AE85FF;
+  padding: 2em;
+  border-radius: 15px;
+  &:hover {
+    background-color: #93ae85;
+  }
+}
+li {
+  font-size: 2em;
+}
+#imgContainer {
+  position: relative;
+  text-align: center;
+  color: #000000;
+}
+.hidden {
+  display: none;
+}
+.theme_picture {
+  width: 100%;
+  height: auto;
+}
+.mainMenuItem {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+.headerImg {
+  width: 100%;
+  height: auto;
+}
+.imgHead {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+.margin {
+  height: 6em;
+}
+#login {
+  align-self: end;
+  alignment: right;
+}
+@media (max-width: 1000px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  #main_content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 720px) {
+  .heroTop {
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
+  .heroBottom {
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+}
+@media (max-width: 376px) {
+  h1 {
+    font-size: 4em;
+  }
+  h2 {
+    font-size: 3em;
+  }
+  h3 {
+    font-size: 2em;
+  }
+}
