@@ -38,4 +38,4 @@ export default class kwmJS {
         return this.translator.translate(key);
     }
 }
-new kwmJS();
+//new kwmJS();

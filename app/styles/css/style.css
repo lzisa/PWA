@@ -17,6 +17,8 @@ h1, h2, h3, h4, h5{
     margin: 2em;
 }
 
+
+
 /*Navigation*/
 #homeImg{
     width: 150px;
@@ -108,7 +110,7 @@ nav{
 
 .journeyLink{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
 }
 .journeyEvent{
@@ -116,6 +118,7 @@ nav{
     border: 1px solid #93AE85FF;
     padding: 2em;
     border-radius: 15px;
+    margin: 1em;
 }
 .journeyEvent:hover{
     background-color: #93ae85;
@@ -165,8 +168,69 @@ li{
     height: 6em;
 }
 #login{
-    align-self: end;
-    alignment: right;
+ margin: 4em;
+}
+
+#login_state{
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #3b6538;
+}
+.loginstate *{
+    margin: 0.5em;
+}
+#login_state.red{
+    background-color: red;
+}
+
+
+/**dropdown**/
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }
 
 
@@ -196,6 +260,7 @@ li{
 
 /*iPhone X - Ansicht*/
 @media (max-width: 376px) {
+
     #contentField {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -212,6 +277,11 @@ li{
     h3{
         font-size: 2em;
     }
+    p{
+        font-size: 3em;
+    }
+
+
 }
 @media (min-width: 375px) {
 

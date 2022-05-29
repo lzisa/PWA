@@ -1,30 +1,17 @@
-.member, .activityCard {
-  background-color: #d4decf;
-  border: 1px solid #607b52;
-  list-style-type: none;
+/* Error: Undefined variable.
+ *    ,
+ * 14 | $form-select-padding-y:             $input-padding-y;
+ *    |                                     ^^^^^^^^^^^^^^^^
+ *    '
+ *   styles\scss\style.scss 14:37  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
   padding: 1em;
-  border-radius: 0.5em;
-  -webkit-border-radius: 0.5em;
-  -moz-border-radius: 0.5em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined variable.\a    \2577 \a 14 \2502  $form-select-padding-y:             $input-padding-y;\d\a    \2502                                      ^^^^^^^^^^^^^^^^\a    \2575 \a   styles\\scss\\style.scss 14:37  root stylesheet";
 }
-
-.activityCard {
-  background-color: #93ae85;
-}
-
-.body {
-  font-size: 25px;
-  color: #93ae85;
-  font-weight: bold;
-  line-height: 2em;
-}
-
-#title {
-  font-family: "Source Sans Pro";
-  font-size: 50px;
-  color: #3b6538;
-  font-weight: thin;
-  line-height: 2em;
-}
-
-/*# sourceMappingURL=main.css.map */

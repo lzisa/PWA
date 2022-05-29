@@ -9,12 +9,27 @@ self.addEventListener('install', function (e) {
     }))
 });
 
+if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    // ✅ Can use window here
+} else {
+    console.log('You are on the server')
+    // ⛔️ Don't use window here
+}
+
+if (navigator.onLine) {
+    console.log('We\'re online!');
+} else {
+    console.log('We\'re offline...');
+}
+
+
 self.addEventListener("activate", event => {
-   // console.log("activate!");
+    // console.log("activate!");
 });
 
-self.addEventListener("fetch", function(event){
-   // console.log("Fetch", event.request);
+self.addEventListener("fetch", function (event) {
+    // console.log("Fetch", event.request);
 });
 
 self.addEventListener("push", event => {
@@ -22,5 +37,6 @@ self.addEventListener("push", event => {
     const options = {
         body: event.data.text()
     };
-    event.waitUntil(self.registration.showNotification(title,options));
+    event.waitUntil(self.registration.showNotification(title, options));
 });
+

@@ -9,6 +9,15 @@ module.exports = function (grunt) {
                 dest: 'js/concat/concat.js',
             },
         },
+        jshint: {
+            beforeconcat: ['js/kwm.js', 'js/kwm-model.js', 'js/kwm-route.js', 'js/kwm-router.js',
+                'js/kwm-templater.js', "js/kwm-translator.js", "js/kwm-utils.js"],
+            afterconcat: ['dist/output.js']
+        },
+        nodeunit: {
+            files: ['js/concat/concat.js']
+        },
+
         watch: {
             css: {
                 files: ['styles/scss/*.scss'],
@@ -30,34 +39,32 @@ module.exports = function (grunt) {
                 }
             }
         },
-        cssmin: {
-            options: {
-                mergeIntoShorthands: false,
-                roundingPrecision: -1
-            },
-            target: {
-                files: {
-                    'styles/css/style.min.css': [ 'style.css'],
-                    'styles/css/bootstrap4-wizardry.min.css': [ 'bootstrap4-wizardry.css'],
-                    'styles/css/main.min.css': [ 'main.css']
-                }
-            }
-        },
+
         uglify: {
             my_target: {
                 files: {
                     'js/uglified/uglifiedJSFiles.min.js': ['js/concat/concat.js'],
-                    'views/view.journeys.min.js':['views/view.journeys.js'],
-                    'views/view.404.min.js':['views/view.404.js'],
+                    'views/view.journeys.min.js': ['views/view.journeys.js'],
+                    'views/view.404.min.js': ['views/view.404.js'],
                 }
             }
+        },
+        htmlhint: {
+            html1: {
+                options: {
+                    'tag-pair': true
+                },
+                src: ['index.html']
+            }
         }
-
     });
+    grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('default', ['sass', 'cssmin', "concat, uglify"]);
-};
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    grunt.registerTask('default', ['sass', "concat, uglify"]);
+}
+;

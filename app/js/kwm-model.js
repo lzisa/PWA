@@ -10,8 +10,8 @@ export default class KWM_Model {
                     .then(response => response.json())
                     .then(allJourneys => {
                         for (let journey of allJourneys) {
-                            console.log(journey);
                             this.journeys.push(journey.acf);
+                            localStorage.setItem(journey.acf.travelgroup_name,journey);
                         }
                         resolve(this.journeys);
                     })

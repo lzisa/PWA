@@ -1,10 +1,12 @@
 import KWM_Route from '../js/kwm-route.js?v=0.2';
 import KWM_Model from "../js/kwm-model.js";
 
+
 export let view = new KWM_Route("/journeys", async function () {
     await kwm.model.getAllJourneys();
     await this.rendering();
 });
+
 
 view.rendering = async function () {
     await kwm.templater.renderTemplate("journeyOverview", document.getElementById("kwmJS"));
@@ -17,21 +19,61 @@ view.rendering = async function () {
         });
 };
 
+
 function renderPosts(journeys) {
+    clearRenderList();
     let journeysListContainer = document.getElementById("renderList");
 
-    for (let journey of journeys) {
+    let valueFilter = $('#continent').find(":selected").text();
+    let selectedJourneys;
+    if (valueFilter === "-") {
+        selectedJourneys = journeys;
+    } else
+        selectedJourneys = filterfunction(journeys, valueFilter);
+
+    for (let journey of selectedJourneys) {
         //render List View
-        let journeyContainer = document.createElement("div");
-        journeyContainer.classList.add("journeyEvent");
-        journeyContainer.setAttribute("id", "journey" + journey.id);
-        journeyContainer.dataset.resourceid = journey.id;
-        journeyContainer.addEventListener("click", function () {
-            toggleHidden(journeys, journey);
-        });
-        kwm.templater.renderTemplate("journeyList", journeyContainer, journey.acf);
-        journeysListContainer.append(journeyContainer);
+
+        let user = window.localStorage.getItem("user_display_name");
+        let members = journey.acf.gruppenmitglieder;
+        for (let member of members) {
+            let name = member.member.display_name;
+            if (name === user) {
+                let journeyContainer = document.createElement("div");
+                journeyContainer.classList.add("journeyEvent");
+                journeyContainer.setAttribute("id", "journey" + journey.id);
+                journeyContainer.dataset.resourceid = journey.id;
+                journeyContainer.addEventListener("click", function () {
+                    toggleHidden(journeys, journey);
+                });
+                kwm.templater.renderTemplate("journeyList", journeyContainer, journey.acf);
+                journeysListContainer.append(journeyContainer);
+            }
+        }
+
     }
+    initialiseSelectClickhandler();
+}
+
+async function initialiseSelectClickhandler() {
+    continent.addEventListener("change", function () {
+        paginate();
+    })
+}
+
+function filterfunction(journeys, valueFilter) {
+
+    let selectedJourneys = [];
+
+    for (let journey of journeys) {
+        if (journey.acf.continent === valueFilter) {
+            selectedJourneys.push(journey);
+        }
+    }
+    return selectedJourneys;
+}
+function sortfunction(journeys, valueFilter){
+
 }
 
 function clearDetailList() {
@@ -39,6 +81,12 @@ function clearDetailList() {
     let getDetailList = document.getElementById("detailList");
     while (getDetailList.hasChildNodes()) {
         getDetailList.removeChild(getDetailList.firstChild);
+    }
+}
+function clearRenderList() {
+    let renderList = document.getElementById("renderList");
+    while (renderList.hasChildNodes()) {
+        renderList.removeChild(renderList.firstChild);
     }
 }
 
@@ -49,23 +97,6 @@ async function clearViewSpecific() {
     }
 }
 
-/*async function renderSlider(journey) {
-    console.log("Journey: ");
-    console.log(journey.acf.gallery);
-    let journeysCarouselNode = document.getElementById("carouselJourney");
-    console.log(journeysCarouselNode);
-
-    for(let pic of journey.acf.gallery){
-        console.log("iterate");
-        console.log(pic);
-        let carouselItem = document.createElement("div");
-        carouselItem.classList.add("headerImg");
-
-        await kwm.templater.renderTemplate("journeyCarousel", carouselItem, pic);
-        journeysCarouselNode.append(carouselItem);
-    }
-
-}*/
 async function toggleHidden(journeys, journey) {
     //clearDetailView
     clearDetailList();
@@ -74,7 +105,7 @@ async function toggleHidden(journeys, journey) {
     //render Detail View
     for (let currJourney of journeys) {
         if (journey.id === currJourney.id) {
-            console.log(journey.acf);
+
             let journeyDetail = document.createElement("div");
             journeyDetail.setAttribute("id", "journeyDetail" + journey.id);
             await kwm.templater.renderTemplate("journeyDetail", journeyDetail, journey.acf);
@@ -121,7 +152,6 @@ async function createSpecView(journey) {
 }
 
 async function viewMembers(journey) {
-    console.log("EventListener viewMembers funktioniert");
     clearViewSpecific();
 
     let viewSpecificContainer = document.getElementById("viewSpecific");
@@ -133,21 +163,16 @@ async function viewMembers(journey) {
     viewSpecificContainer.append(journeyMembers);
 
     //Create targets
-    //console.log(journey.acf);
     let members = journey.acf.gruppenmitglieder;
-    //console.log(members);
     for (let member of members) {
-        console.log(member);
         let div = document.createElement("ul");
         div.classList.add("list-group");
-
         await kwm.templater.renderTemplate("member", div, member.member);
         journeyMembers.append(div);
     }
 }
 
 async function viewTodos(journey) {
-    //console.log("EventListener Todos funktioniert");
     clearViewSpecific();
 
     let viewSpecificContainer = document.getElementById("viewSpecific");
@@ -157,7 +182,6 @@ async function viewTodos(journey) {
     journeyTodos.classList.add("todoContainer");
 
     //check if there are todos
-    console.log(journey.acf);
     let keys = Object.keys(journey.acf);
     let condition = journey.acf.to_dos;
     if (condition !== undefined) {
@@ -166,9 +190,8 @@ async function viewTodos(journey) {
                 await kwm.templater.renderTemplate("todos", journeyTodos, journey.acf);
                 viewSpecificContainer.append(journeyTodos);
                 let todos = journey.acf.to_dos;
-               // let node = document.getElementById("journeyT");
+                // let node = document.getElementById("journeyT");
                 for (let todo of todos) {
-                    console.log(todo);
                     let div = document.createElement("div");
                     div.classList.add("custom-control");
                     div.classList.add("custom-checkbox");
@@ -185,13 +208,11 @@ async function viewTodos(journey) {
 }
 
 function createMessageToDo() {
-    console.log("Message wird ausgegeben");
     let p = document.createElement("p");
     let viewSpecific = document.getElementById("viewSpecific");
     let text = "Es gibt noch keine To Dos";
 
     p.append(text);
-    console.log(p);
     viewSpecific.append(p);
 }
 
@@ -245,6 +266,41 @@ function paginate(totalPages) {
 }
 
 
+/**
+ * not used functions
+ * @param acf
+ */
+function createJourney(acf) {
+    createHardfacts(acf);
+    createGallery(acf);
+}
+
+function createGallery(acf) {
+    let pictures = acf['gallery'];
+    for (let pic of pictures) {
+        fetchPicture(pic);
+    }
+}
+
+//TODO: mit URL arbeiten
+
+function fetchPicture(pic) {
+    let pfad = pic['picture']['url'];
+    let image = `<image src="${pfad}"></image>`;
+    $("#hardfacts").append(image);
+
+}
+
+function renderFilter() {
+    //fetch("https://api.s2010456035.student.kwmhgb.at/wp-json/wp/v2/categories").then(function (response
+    //  ) {
+    //TODO: Auslesen der Filter und dynamischen Filter erzeugen
+
+
+    // });
+
+}
+
 function createHardfacts(acf) {
     let travelgroup_name = acf['travelgroup_name'];
     let unterkunft = acf['unterkunft'];
@@ -268,26 +324,5 @@ function createHardfacts(acf) {
 <a href="${unterkunft_link}">Link zur Unterkunft</a>
 </div>`);
     $("#hardfacts").append(hardfactAusgabe);
-
-}
-
-function createJourney(acf) {
-    createHardfacts(acf);
-    createGallery(acf);
-}
-
-function createGallery(acf) {
-    let pictures = acf['gallery'];
-    for (let pic of pictures) {
-        fetchPicture(pic);
-    }
-}
-
-//TODO: mit URL arbeiten
-
-function fetchPicture(pic) {
-    let pfad = pic['picture']['url'];
-    let image = `<image src="${pfad}"></image>`;
-    $("#hardfacts").append(image);
 
 }

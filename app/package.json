@@ -5,8 +5,14 @@
     "grunt": "^1.5.3",
     "grunt-contrib-concat": "^2.1.0",
     "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-jshint": "^3.2.0",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-uglify": "^5.2.1",
-    "grunt-contrib-watch": "^1.1.0"
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-htmlhint": "^0.9.13"
+  },
+  "dependencies": {
+    "grunt-image": "^4.0.0",
+    "grunt-jsvalidate": "^0.2.2"
   }
 }
